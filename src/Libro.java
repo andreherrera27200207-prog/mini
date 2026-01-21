@@ -1,3 +1,8 @@
+
+/***
+ * @author Fabricio
+ */
+
 public class Libro {
     private int id_libro;
     private String nombre_Libro;
