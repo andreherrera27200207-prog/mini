@@ -4,7 +4,7 @@
  */
 
 public class Libro {
-    private int id_libro;
+    private String id_libro;
     private String nombre_Libro;
     private String autor;
     private String categoria;
@@ -12,18 +12,18 @@ public class Libro {
     public Libro() {
     }
 
-    public Libro(int id_libro, String nombre_Libro, String autor, String categoria) {
+    public Libro(String id_libro, String nombre_Libro, String autor, String categoria) {
         this.id_libro = id_libro;
         this.nombre_Libro = nombre_Libro;
         this.autor = autor;
         this.categoria = categoria;
     }
 
-    public int getId_libro() {
+    public String getId_libro() {
         return id_libro;
     }
 
-    public void setId_libro(int id_libro) {
+    public void setId_libro(String id_libro) {
         this.id_libro = id_libro;
     }
 
