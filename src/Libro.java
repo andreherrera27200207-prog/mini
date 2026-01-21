@@ -10,6 +10,12 @@ public class Libro {
     private String categoria;
 
     public Libro() {
+
+        this.id_libro = "-";
+        this.nombre_Libro = "-";
+        this.autor = "-";
+        this.categoria = "-";
+
     }
 
     public Libro(String id_libro, String nombre_Libro, String autor, String categoria) {
