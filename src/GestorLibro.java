@@ -84,6 +84,19 @@ public class GestorLibro {
     }
 
 
+    public Libro[] todos_los_libros() {
+
+        return libro_array;
+
+    }
+
+
+
+    public int indice_incremento_servicioLibro() {
+        return aumento_secuencial;
+    }
+
+
 
 
 
