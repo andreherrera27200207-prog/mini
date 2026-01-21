@@ -3,4 +3,30 @@ public class GestorLibro {
     private Libro[] auxilaLibros;
 
     private int aumento_secuencial;
+
+
+    public GestorLibro(int capacidad) {
+
+        libro_array = new Libro[capacidad];
+        auxilaLibros = new Libro[capacidad];
+        aumento_secuencial = 0;
+
+    }
+
+    public void agregar_Libros_nuevos(String nombreLibro, String autorLibro, String categoria) {
+
+        Libro lib = new Libro();
+   
+        lib.setNombre_Libro(nombreLibro);
+        lib.setAutor(autorLibro);
+        lib.setCategoria(categoria);
+
+        libro_array[aumento_secuencial] = lib;
+        aumento_secuencial++;
+
+    }
+
+    
+
+
 }
