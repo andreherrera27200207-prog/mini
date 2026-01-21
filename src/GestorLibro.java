@@ -63,6 +63,27 @@ public class GestorLibro {
     }
 
 
+    public String mostrar() {
+
+        String todos_los_libros = "";
+
+        for (int i = 0; i < aumento_secuencial; i++) {
+
+            if (libro_array[i].getNombre_Libro() == null) {
+                todos_los_libros += "";
+            } else {
+
+                todos_los_libros += " Nombre del Libro:  " + libro_array[i].getNombre_Libro() + "  Nombre del autor: " + libro_array[i].getAutor() + " Nombre de la categoría: "
+                        + libro_array[i].getCategoria() + "\n";
+            }
+
+        }
+
+        return todos_los_libros;
+
+    }
+
+
 
 
 
