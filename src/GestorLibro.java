@@ -26,7 +26,25 @@ public class GestorLibro {
 
     }
 
-    
+
+    public void eliminar_Libro(String nombre) {
+
+        for (int i = 0; i < aumento_secuencial; i++) {
+
+            if (libro_array[i].getNombre_Libro().equals(nombre)) {
+
+                libro_array[i].setNombre_Libro(null);
+                libro_array[i].setAutor(null);
+                libro_array[i].setCategoria(null);
+
+            }
+
+        }
+
+    }
+
+
+
 
 
 }
