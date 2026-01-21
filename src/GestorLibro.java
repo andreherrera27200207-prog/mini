@@ -43,6 +43,26 @@ public class GestorLibro {
 
     }
 
+    public String buscar_Libro(String nombreLibro, String autorLibro, String categoria) {
+
+        String retorno = "";
+
+        for (int i = 0; i < aumento_secuencial; i++) {
+
+            if (libro_array[i].getNombre_Libro().equals(nombreLibro) || libro_array[i].getAutor().equals(autorLibro)
+                    || libro_array[i].getCategoria().equals(categoria)) {
+
+                retorno = libro_array[i].getNombre_Libro() + libro_array[i].getAutor() + libro_array[i].getCategoria();
+
+            }
+
+        }
+
+        return retorno;
+
+    }
+
+
 
 
 
