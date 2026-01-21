@@ -13,15 +13,15 @@ public class GestorLibro {
 
     }
 
-    public boolean agregar_Libros_nuevos(Libro libro) {
+    public void agregar_Libros_nuevos(Libro libro) {
 
         if (aumento_secuencial < MAX) {
             libro_array[aumento_secuencial] = libro;
             aumento_secuencial++;
-            return true;
+            
 
         }
-        return false;
+        
 
     }
 
