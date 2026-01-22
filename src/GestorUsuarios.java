@@ -27,4 +27,18 @@ public class GestorUsuarios {
         totalUsuarios++;
         return true;
     }
+
+    //Para listar usuarios:
+    //Decirle al main cuantos usuarios tenemos
+    public int getTotalUsuarios(){
+        return totalUsuarios;
+    }
+
+    //Devolver un usuario
+    public Usuario getUsuarioEn (int posicion){
+        if(posicion<0 || posicion>=totalUsuarios){
+            return null;
+        }
+        return usuarios[posicion];
+    }
 }
