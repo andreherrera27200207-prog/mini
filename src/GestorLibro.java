@@ -2,7 +2,6 @@
  * @author Fabricio
  */
 
-
 public class GestorLibro {
     private Libro[] libro_array;
     private Usuario[] usuario_prestamos;
@@ -39,38 +38,56 @@ public class GestorLibro {
         Libro lib = new Libro();
 
         for (int i = 0; i < aumento_secuencial; i++) {
-            if (libro_array[i].equals(id)) {
+            if (libro_array[i].getId_libro().equals(id)) {
 
                 x = libro_array[i].getStock();
                 libro_array[i].setStock(x--);
 
-                ////////////////////////////////////7
-                /// 
-                /// 
-                /// 
+                //////////////////////////////////// 7
+                ///
+                ///
+                ///
 
                 lib.setNombre_Libro(libro_array[i].getNombre_Libro());
                 lib.setId_libro(libro_array[i].getId_libro());
- 
-                
+
                 usuario_prestamos[aumento_secuencial_prestamos] = usuario;
                 auxilaLibros_prestamos[aumento_secuencial_prestamos] = lib;
                 aumento_secuencial_prestamos++;
-
-
-
 
             }
         }
 
     }
 
+    public boolean devolver_libro(String nombre_Usuario) {
+
+        int x = 0;
+        int g = 0;
+
+        for (int i = 0; i < aumento_secuencial_prestamos; i++) {
+
+            if (usuario_prestamos[i].getNombre().equals(nombre_Usuario)) {
+                g = i;
+
+                for (int j = 0; j < aumento_secuencial; j++) {
+
+                    if (auxilaLibros_prestamos[i].getId_libro().equals(libro_array[j].getId_libro())) {
+
+                        x = libro_array[i].getStock();
+                        libro_array[i].setStock(x++);
 
 
+                        
+                    }
 
+                }
+            }
 
+        }
 
-
+        return true;
+    }
 
     public int buscarIndicePorDNI(String dni) {
         for (int i = 0; i < aumento_secuencial; i++) {
@@ -124,7 +141,7 @@ public class GestorLibro {
 
                 todos_los_libros += " Nombre del Libro:  " + libro_array[i].getNombre_Libro() + "  Nombre del autor: "
                         + libro_array[i].getAutor() + " Nombre de la categoría: "
-                        + libro_array[i].getCategoria() + " STOCK:  "+  libro_array[i].getStock()  + "\n";
+                        + libro_array[i].getCategoria() + " STOCK:  " + libro_array[i].getStock() + "\n";
             }
 
         }
