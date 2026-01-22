@@ -8,6 +8,7 @@ public class Libro {
     private String nombre_Libro;
     private String autor;
     private String categoria;
+    private int stock;
 
     public Libro() {
 
@@ -15,14 +16,24 @@ public class Libro {
         this.nombre_Libro = "-";
         this.autor = "-";
         this.categoria = "-";
+        this.stock = 10;
 
     }
 
-    public Libro(String id_libro, String nombre_Libro, String autor, String categoria) {
+    public Libro(String id_libro, String nombre_Libro, String autor, String categoria, int stock) {
         this.id_libro = id_libro;
         this.nombre_Libro = nombre_Libro;
         this.autor = autor;
         this.categoria = categoria;
+        this.stock = stock;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
     public String getId_libro() {
