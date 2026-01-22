@@ -67,7 +67,7 @@ public class Bilioteca {
                 
                 if (u.isAdmin()) {
                     //Menú admin
-                    System.out.println("\n--- Menú Admin ---");
+                    System.out.println("--- Menú Admin ---");
                     System.out.println("1. Agregar libro");
                     System.out.println("2. Eliminar libro");
                     System.out.println("3. Buscar libro");
@@ -81,7 +81,18 @@ public class Bilioteca {
 
                     switch (opcion) {
                         case "1":
+                            System.out.println("1- Agregar libro");
+                            System.out.print("ID libro: ");
+                            String id = sc.nextLine();
+                            System.out.print("Nombre libro: ");
+                            String nombreLibro = sc.nextLine();
+                            System.out.print("Autor: ");
+                            String autor = sc.nextLine();
+                            System.out.print("Categoría: ");
+                            String categoria = sc.nextLine();
 
+                            g_Biblioteca.agregar_libros_biblioteca(id, nombreLibro, autor, categoria);
+                            System.out.println("¡Libro agregado correctamente!");
                             break;
 
                         case "2":
