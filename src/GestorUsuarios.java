@@ -5,11 +5,11 @@
 public class GestorUsuarios {
     private Usuario[] usuarios;
     private final int MAX =100;
-    private int cantidad;
+    private int totalUsuarios;
 
     public GestorUsuarios(){
         this.usuarios = new Usuario[MAX];
-        this.cantidad=0;
+        this.totalUsuarios=0;
     }
 
 }
