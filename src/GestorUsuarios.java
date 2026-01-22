@@ -56,4 +56,31 @@ public class GestorUsuarios {
     public boolean esAdmin(int indiceUsuario){
         return usuarios[indiceUsuario].isAdmin();
     }
+
+    //Buscar usuario por id para eliminarlo
+    public int buscarIndicePorId(int idUsuario) {
+        for (int i = 0; i < totalUsuarios; i++) {
+            if (usuarios[i].getId() == idUsuario) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    //Eliminar usuarios
+    public boolean eliminarUsuario(int idUsuario) {
+        int posicion = buscarIndicePorId(idUsuario);
+
+        if (posicion != -1) {
+        for (int i = posicion + 1; i < totalUsuarios; i++) {
+            usuarios[i - 1] = usuarios[i];
+        }
+        totalUsuarios--;
+        return true;
+    }
+
+    return false;
+    }
+
 }
