@@ -34,7 +34,7 @@ public class GestorBiblioteca {
 
             frase += g_libro.todos_los_libros()[i].getId_libro() + " " + g_libro.todos_los_libros()[i].getNombre_Libro()
                     + " " + g_libro.todos_los_libros()[i].getAutor() + " "
-                    + g_libro.todos_los_libros()[i].getCategoria() + "\n";
+                    + g_libro.todos_los_libros()[i].getCategoria() + g_libro.todos_los_libros()[i].getStock() +"\n";
 
         }
 

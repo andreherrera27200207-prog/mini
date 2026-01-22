@@ -50,6 +50,7 @@ public class GestorLibro {
                 /// 
 
                 lib.setNombre_Libro(libro_array[i].getNombre_Libro());
+                lib.setId_libro(libro_array[i].getId_libro());
  
                 
                 usuario_prestamos[aumento_secuencial_prestamos] = usuario;
@@ -63,6 +64,13 @@ public class GestorLibro {
         }
 
     }
+
+
+
+
+
+
+
 
     public int buscarIndicePorDNI(String dni) {
         for (int i = 0; i < aumento_secuencial; i++) {
@@ -116,7 +124,7 @@ public class GestorLibro {
 
                 todos_los_libros += " Nombre del Libro:  " + libro_array[i].getNombre_Libro() + "  Nombre del autor: "
                         + libro_array[i].getAutor() + " Nombre de la categoría: "
-                        + libro_array[i].getCategoria() + "\n";
+                        + libro_array[i].getCategoria() + " STOCK:  "+  libro_array[i].getStock()  + "\n";
             }
 
         }
