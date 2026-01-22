@@ -124,10 +124,22 @@ public class Bilioteca {
                             break;
 
                         case "4":
-
+                            System.out.println("--- Libros Disponibles ---");
+                            System.out.println(g_Biblioteca.mostrar_libro());
+                            break;
 
                         case "5":
-   
+                            System.out.print("Nombre usuario: ");
+                            String nUsuario = sc.nextLine();
+                            System.out.print("Contraseña: ");
+                            String passUsuario = sc.nextLine();
+                            System.out.print("Admin? (true/false): ");
+                            boolean esAdmin = Boolean.parseBoolean(sc.nextLine());
+
+                            boolean registrado = gUsuarios.registrarUsuarios(nUsuario, passUsuario, esAdmin);
+                            if (registrado) System.out.println("Usuario registrado.");
+                            else System.out.println("No se pudo registrar (base de datos llena).");
+                            break;
 
                         case "6":
 
