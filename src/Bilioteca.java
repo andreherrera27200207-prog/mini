@@ -142,7 +142,12 @@ public class Bilioteca {
                             break;
 
                         case "6":
-
+                            System.out.println("--- Usuarios Registrados ---");
+                            for (int i = 0; i < gUsuarios.getTotalUsuarios(); i++) {
+                                Usuario user = gUsuarios.getUsuarioEn(i);
+                                System.out.println(user.getId() + " - " + user.getNombre() + " - admin? " + user.isAdmin());
+                            }
+                            break;
 
                         case "0":
                             salir = true;
