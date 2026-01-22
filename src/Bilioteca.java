@@ -40,6 +40,26 @@ public class Bilioteca {
         gUsuarios.registrarUsuarios("jose", "abcd", false);
         gUsuarios.registrarUsuarios("angel", "4321", false);
 
+        //--------------------------------Login---------------------------------------
+        int usuarioLogueado =-1;
+        boolean logueado = false;
+        while(!logueado){
+            System.out.println("----Login----");
+            System.out.println("Usuario: ");
+            String nombre = sc.nextLine();
+            System.out.println("Contraseña: ");
+            String contrasena= sc.nextLine();
+
+            usuarioLogueado = gUsuarios.login(nombre, contrasena);
+            if(usuarioLogueado!= -1){
+                System.out.println("¡Login correcto! Bienvenido "+ gUsuarios.getUsuarioEn(usuarioLogueado).getNombre());
+                logueado = true;
+            }else{
+                System.out.println("Usuario o contraseña incorrectos, inténtalo de nuevo");
+            }
+
+            
+        }
 
     }
 }
