@@ -41,4 +41,19 @@ public class GestorUsuarios {
         }
         return usuarios[posicion];
     }
+
+    //método login
+    public int login(String nombre, String contrasena){
+        for(int i=0; i<totalUsuarios;i++){
+            if(usuarios[i].getNombre().equals(nombre) && usuarios[i].getContrasena().equals(contrasena)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    //método para ver si es admin
+    public boolean esAdmin(int indiceUsuario){
+        return usuarios[indiceUsuario].isAdmin();
+    }
 }
