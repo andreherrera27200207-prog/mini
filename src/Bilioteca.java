@@ -96,7 +96,15 @@ public class Bilioteca {
                             break;
 
                         case "2":
-
+                            System.out.print("ID libro a eliminar: ");
+                            String idEliminar = sc.nextLine();
+                            boolean ok = g_Biblioteca.g_libro.eliminar_Libro(idEliminar);
+                            if (ok){
+                                System.out.println("Libro eliminado.");
+                            }else{
+                                System.out.println("No se encontró el libro.");
+                            }
+                            break;
 
                         case "3":
 
