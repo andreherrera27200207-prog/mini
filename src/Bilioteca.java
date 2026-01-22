@@ -107,7 +107,21 @@ public class Bilioteca {
                             break;
 
                         case "3":
+                            System.out.println("3- Buscar libro");
+                            System.out.print("Nombre: ");
+                            String nLibro = sc.nextLine();
+                            System.out.print("Autor): ");
+                            String aLibro = sc.nextLine();
+                            System.out.print("Categoría: ");
+                            String cLibro= sc.nextLine();
 
+                            Libro libro = g_Biblioteca.g_libro.buscar_Libro(nLibro, aLibro, cLibro);
+                            if (libro != null) {
+                                System.out.println("Libro encontrado: " + libro.getNombre_Libro() + " - " + libro.getAutor() + " - " + libro.getCategoria());
+                            } else {
+                                System.out.println("No se encontró ningún libro.");
+                            }
+                            break;
 
                         case "4":
 
