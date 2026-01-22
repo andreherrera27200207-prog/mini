@@ -1,3 +1,8 @@
+/***
+ * @author Fabricio
+ */
+
+
 public class GestorLibro {
     private Libro[] libro_array;
     private Usuario[] usuario_prestamos;
