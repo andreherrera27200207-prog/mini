@@ -1,11 +1,18 @@
-public class Bilioteca {
-    
+import java.util.Scanner;
 
+/**
+ * @author Pablo
+ * @author Fabricio
+ */
+public class Bilioteca { 
     public static void main(String[] args) {
-        
 
+        Scanner sc = new Scanner(System.in);
+
+        GestorUsuarios gUsuarios = new GestorUsuarios();
         GestorBiblioteca g_Biblioteca = new GestorBiblioteca();
 
+        //Libros guardados de prueba
         g_Biblioteca.agregar_libros_biblioteca("1234", "Jair", "Juego 1", "Romance");
         g_Biblioteca.agregar_libros_biblioteca("1345", "Eddy", "juego2", "Accion");
         g_Biblioteca.agregar_libros_biblioteca("1367", "Santiago", "Juego3", "Documental");
@@ -19,27 +26,20 @@ public class Bilioteca {
         g_Biblioteca.agregar_libros_biblioteca("1123", "Rocio", "Juego10", "Ciencia Ficción");
         g_Biblioteca.agregar_libros_biblioteca("1115", "Pilar", "Juego11", "Documental");
 
-
-
-
-        System.out.println(g_Biblioteca.mostrar_libro());
-
-
-
-
-
-
-
-
-
-
-
-
-
+         //Usuarios guardados de prueba
+        gUsuarios.registrarUsuarios("admin", "admin", true);
+        gUsuarios.registrarUsuarios("pablo", "abcd", true);
+        gUsuarios.registrarUsuarios("fabricio", "1234", true);
+        gUsuarios.registrarUsuarios("pedro", "1234", false);
+        gUsuarios.registrarUsuarios("alberto", "abcd", false);
+        gUsuarios.registrarUsuarios("maría", "4321", false);
+        gUsuarios.registrarUsuarios("ana", "1234", false);
+        gUsuarios.registrarUsuarios("juana", "abcd", false);
+        gUsuarios.registrarUsuarios("roberto", "4321", false);
+        gUsuarios.registrarUsuarios("irene", "1234", false);
+        gUsuarios.registrarUsuarios("jose", "abcd", false);
+        gUsuarios.registrarUsuarios("angel", "4321", false);
 
 
     }
-
-
-
 }
