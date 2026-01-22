@@ -17,7 +17,7 @@ public class Bilioteca {
         g_Biblioteca.agregar_libros_biblioteca("1897", "Ana", "Juego9", "Documental");
         g_Biblioteca.agregar_libros_biblioteca("1854", "Camila", "Juego9", "Romance");
         g_Biblioteca.agregar_libros_biblioteca("1123", "Rocio", "Juego10", "Ciencia Ficción");
-        g_Biblioteca.agregar_libros_biblioteca("1115", "Pilar", "Juego11", "Ciencia Ficción");
+        g_Biblioteca.agregar_libros_biblioteca("1115", "Pilar", "Juego11", "Documental");
 
 
 
@@ -27,7 +27,7 @@ public class Bilioteca {
 
 
 
-        
+
 
 
 
