@@ -58,7 +58,57 @@ public class Bilioteca {
                 System.out.println("Usuario o contraseña incorrectos, inténtalo de nuevo");
             }
 
-            
+            //Menú principal-------------------------
+            boolean salir= false;
+
+            while(!salir){
+                Usuario u =gUsuarios.getUsuarioEn(usuarioLogueado);
+
+                
+                if (u.isAdmin()) {
+                    //Menú admin
+                    System.out.println("\n--- Menú Admin ---");
+                    System.out.println("1. Agregar libro");
+                    System.out.println("2. Eliminar libro");
+                    System.out.println("3. Buscar libro");
+                    System.out.println("4. Mostrar todos los libros");
+                    System.out.println("5. Registrar usuario");
+                    System.out.println("6. Consultar usuarios");
+                    System.out.println("0. Salir");
+                    System.out.print("Opción: ");
+                    String opcion = sc.nextLine();
+                    System.out.println("");
+
+                    switch (opcion) {
+                        case "1":
+
+                            break;
+
+                        case "2":
+
+
+                        case "3":
+
+
+                        case "4":
+
+
+                        case "5":
+   
+
+                        case "6":
+
+
+                        case "0":
+                            salir = true;
+                            break;
+
+                        default:
+                            System.out.println("Opción no válida.");
+                    }
+                }
+            }
+
         }
 
     }
