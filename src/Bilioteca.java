@@ -74,6 +74,8 @@ public class Bilioteca {
                     System.out.println("4. Mostrar todos los libros");
                     System.out.println("5. Registrar usuario");
                     System.out.println("6. Consultar usuarios");
+                    System.out.println("7. Eliminar usuario");
+                    System.out.println("8. Mostrar libros prestados");
                     System.out.println("0. Salir");
                     System.out.print("Opción: ");
                     String opcion = sc.nextLine();
@@ -148,6 +150,26 @@ public class Bilioteca {
                                 System.out.println(user.getId() + " - " + user.getNombre() + " - admin? " + user.isAdmin());
                             }
                             break;
+                        
+                        case "7":
+                            System.out.print("ID del usuario a eliminar: ");
+                            int idEliminarUsuario = Integer.parseInt(sc.nextLine());
+
+                            boolean eliminado = gUsuarios.eliminarUsuario(idEliminarUsuario);
+
+                            if (eliminado) {
+                                System.out.println("Usuario eliminado correctamente.");
+                            } else {
+                                System.out.println("No se encontró ningún usuario con ese ID.");
+                            }
+                            break;
+                            
+                        //TODO--------------------------------------------------------------------------------------------------------
+                        case "8":
+                            System.out.println("--- Libros Prestados ---");
+
+                        
+                            break;
 
                         case "0":
                             salir = true;
@@ -156,6 +178,7 @@ public class Bilioteca {
                         default:
                             System.out.println("Opción no válida.");
                     }
+
                 }
             }
 
