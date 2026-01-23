@@ -168,6 +168,7 @@ public class Bilioteca {
             System.out.println("2. Mostrar todos los libros");
             System.out.println("3. Pedir prestado un libro");
             System.out.println("4. Devolver libro");
+            System.out.println("5. Mostrar lista de prestamos");
             System.out.println("0. Salir");
             System.out.print("Opción: ");
             String opcion = sc.nextLine();
@@ -192,12 +193,26 @@ public class Bilioteca {
                     System.out.println(g_Biblioteca.mostrar_libro());
                     break;
                 case "3":
-                    //TODO----------------------------------------------------------------------------------------------------------
-                    System.out.println("--- Pedir prestado un libro ---");
+                    System.out.println("--- Pedir prestado un ibro ---");
+                    System.out.println("Introduce tu nombre: ");
+                    String nombre = sc.nextLine();
+                    System.out.println("Introduce el libro que quieres pedir prestado");
+                    String id_libro = sc.nextLine();
+
+                    g_Biblioteca.coger_prestados_libros_biblioteca(nombre, id_libro);
+
                     break;
-                 case "4":
-                    //TODO----------------------------------------------------------------------------------------------------------
+                case "4":
                     System.out.println("--- Devolver un libro ---");
+                    String name= gUsuarios.getUsuarioEn(usuarioLogueado).getNombre();
+
+                    g_Biblioteca.devolver_libros_biblioteca(name);
+                    
+                    break;
+                case "5":
+
+                    System.out.println(g_Biblioteca.mostrar_prueba());
+
                     break;
                 case "0":
                     salir = true;
