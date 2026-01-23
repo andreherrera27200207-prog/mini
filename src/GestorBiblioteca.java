@@ -25,6 +25,14 @@ public class GestorBiblioteca {
 
     }
 
+
+
+
+
+
+
+
+
     public void coger_prestados_libros_biblioteca(String nombre_usuario, String id_libro) {
 
         Random r = new Random();
@@ -76,6 +84,36 @@ public class GestorBiblioteca {
         }
 
         return frase;
+
+    }
+
+
+
+    public String libro_mas_prestado(){
+
+        String libro_mas = g_libro.libro_más_prestados();
+
+        return  libro_mas;
+
+    }
+
+
+    public String usuario_que_mas_solicito(){
+
+        String usuario_mas = g_libro.Usuario_más_prestamos();
+
+        return usuario_mas;
+
+    }
+
+
+    public int cantidad_prestamos(){
+
+        int cantidad;
+
+        cantidad = g_libro.cantidad_de_prestamos();
+
+        return cantidad;
 
     }
 

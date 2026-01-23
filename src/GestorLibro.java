@@ -41,7 +41,7 @@ public class GestorLibro {
             if (libro_array[i].getId_libro().equals(id_libro)) {
 
                 x = libro_array[i].getStock();
-                libro_array[i].setStock(x-1);
+                libro_array[i].setStock(x - 1);
 
                 //////////////////////////////////// 7
                 ///
@@ -60,7 +60,7 @@ public class GestorLibro {
 
     }
 
-    //Cambiado para devolver por id de libro--------------------------------
+    // Cambiado para devolver por id de libro--------------------------------
     public void devolver_libro(String id_libro) {
 
         if (id_libro == null) {
@@ -104,30 +104,92 @@ public class GestorLibro {
         System.out.println("Libro devuelto correctamente.");
     }
 
+    public String libro_más_prestados() {
+        int x = 0;
+
+        int indice = 0;
+
+        for (int j = 0; j < aumento_secuencial_prestamos; j++) {
+            int contador = 0;
+            for (int i = 0; i < aumento_secuencial_prestamos; i++) {
+                if (j != i) {
+                    if (auxilaLibros_prestamos[j].getNombre_Libro()
+                            .equals(auxilaLibros_prestamos[i].getNombre_Libro())) {
+
+                        contador++;
+                        if (x < contador) {
+                            x = contador;
+                            indice = j;
+
+                        }
+
+                    }
+
+                }
+            }
+        }
+
+        return auxilaLibros_prestamos[indice].getNombre_Libro();
+
+    }
+
+    public String Usuario_más_prestamos() {
+
+        int x = 0;
+
+        int indice = 0;
+
+        for (int j = 0; j < aumento_secuencial_prestamos; j++) {
+            int contador = 0;
+            for (int i = 0; i < aumento_secuencial_prestamos; i++) {
+                if (j != i) {
+                    if (usuario_prestamos[j].getNombre()
+                            .equals(usuario_prestamos[i].getNombre())) {
+
+                        contador++;
+                        if (x < contador) {
+                            x = contador;
+                            indice = j;
+
+                        }
+
+                    }
+
+                }
+            }
+        }
+
+        return usuario_prestamos[indice].getNombre();
+
+    }
 
 
 
-    public int mostrar_aumento_secuencial(){
+    public int cantidad_de_prestamos(){
+
+        return aumento_secuencial_prestamos;
+        
+
+    }
+
+
+
+    public int mostrar_aumento_secuencial() {
 
         return aumento_secuencial_prestamos;
 
     }
 
-
-    public Libro[] mostrar_prueba_libro(){
-
+    public Libro[] mostrar_prueba_libro() {
 
         return auxilaLibros_prestamos;
 
     }
 
-
-    public Usuario[] mostrar_prueba_usuario(){
+    public Usuario[] mostrar_prueba_usuario() {
 
         return usuario_prestamos;
     }
-
-
 
     public int buscarIndicePorDNI(String dni) {
         for (int i = 0; i < aumento_secuencial; i++) {
@@ -148,9 +210,6 @@ public class GestorLibro {
             }
 
             aumento_secuencial--;
-
-
-
 
             return true;
         }
