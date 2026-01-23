@@ -163,7 +163,7 @@ public class Bilioteca {
                                 System.out.println("No se encontró ningún usuario con ese ID.");
                             }
                             break;
-                            
+
                         //TODO--------------------------------------------------------------------------------------------------------
                         case "8":
                             System.out.println("--- Libros Prestados ---");
@@ -179,6 +179,31 @@ public class Bilioteca {
                             System.out.println("Opción no válida.");
                     }
 
+                }else {
+                // Menú Usuario normal
+                System.out.println("--- Menú Usuario ---");
+                System.out.println("1. Buscar libro");
+                System.out.println("2. Mostrar todos los libros");
+                System.out.println("0. Salir");
+                System.out.print("Opción: ");
+                String opcion = sc.nextLine();
+                
+                switch (opcion) {
+                    case "1":
+                        
+                        break;
+
+                    case "2":
+
+                        break;
+
+                    case "0":
+                        salir = true;
+                        break;
+
+                    default:
+                        System.out.println("Opción no válida.");
+                    }
                 }
             }
 
