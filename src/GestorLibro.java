@@ -60,49 +60,51 @@ public class GestorLibro {
 
     }
 
-    public void devolver_libro(String nombre_Usuario) {
+    //Cambiado para devolver por id de libro--------------------------------
+    public void devolver_libro(String id_libro) {
 
-        if (nombre_Usuario != null) {
-            int x = 0;
-            int g = 0;
-            boolean encontrar = true;
+        if (id_libro == null) {
+            return;
+        }
 
-            for (int i = 0; i < aumento_secuencial_prestamos; i++) {
+        int posicionPrestamo = -1;
+        boolean encontradoPrestamo = false;
 
-                if (usuario_prestamos[i].getNombre().equals(nombre_Usuario)) {
-                    g = i;
-                    encontrar = false;
-
-                    for (int j = 0; j < aumento_secuencial; j++) {
-
-                        if (auxilaLibros_prestamos[i].getId_libro().equals(libro_array[j].getId_libro())) {
-
-                            x = libro_array[j].getStock();
-                            libro_array[j].setStock(x+1);
-
-                        }
-
-                    }
-
-                }
-
+        // Buscar el libro por id
+        for (int i = 0; i < aumento_secuencial_prestamos && !encontradoPrestamo; i++) {
+            if (auxilaLibros_prestamos[i].getId_libro().equals(id_libro)) {
+                posicionPrestamo = i;
+                encontradoPrestamo = true;
             }
+        }
 
-            if (!encontrar) {
-                for (int i = g + 1; i < aumento_secuencial_prestamos; i++) {
-                    auxilaLibros_prestamos[i - 1] = auxilaLibros_prestamos[i];
-                    usuario_prestamos[i - 1] = usuario_prestamos[i];
-                    
-                }
+        if (!encontradoPrestamo) {
+            System.out.println("Ese libro no está prestado.");
+            return;
+        }
 
-                aumento_secuencial_prestamos--;
+        // Aumentar stock del libro devuelto
+        boolean stockActualizado = false;
+
+        for (int j = 0; j < aumento_secuencial && !stockActualizado; j++) {
+            if (libro_array[j].getId_libro().equals(id_libro)) {
+                libro_array[j].setStock(libro_array[j].getStock() + 1);
+                stockActualizado = true;
             }
+        }
 
-            
-        } 
-            
+        // Eliminar el préstamo del array
+        for (int i = posicionPrestamo + 1; i < aumento_secuencial_prestamos; i++) {
+            auxilaLibros_prestamos[i - 1] = auxilaLibros_prestamos[i];
+            usuario_prestamos[i - 1] = usuario_prestamos[i];
+        }
 
+        aumento_secuencial_prestamos--;
+
+        System.out.println("Libro devuelto correctamente.");
     }
+
+
 
 
     public int mostrar_aumento_secuencial(){
