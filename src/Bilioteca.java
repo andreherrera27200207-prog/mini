@@ -184,16 +184,43 @@ public class Bilioteca {
                 System.out.println("--- Menú Usuario ---");
                 System.out.println("1. Buscar libro");
                 System.out.println("2. Mostrar todos los libros");
+                System.out.println("3. Pedir prestado un libro");
+                System.out.println("4. Devolver libro");
                 System.out.println("0. Salir");
                 System.out.print("Opción: ");
                 String opcion = sc.nextLine();
                 
                 switch (opcion) {
                     case "1":
-                        
+                        System.out.print("Nombre: ");
+                        String nBuscar = sc.nextLine();
+                        System.out.print("Autor: ");
+                        String aBuscar = sc.nextLine();
+                        System.out.print("Categoría: ");
+                        String cBuscar = sc.nextLine();
+
+                        Libro libro = g_Biblioteca.g_libro.buscar_Libro(nBuscar, aBuscar, cBuscar);
+                        if (libro != null) {
+                            System.out.println("Libro encontrado: " + libro.getNombre_Libro() + " - " + libro.getAutor() + " - " + libro.getCategoria());
+                        } else {
+                            System.out.println("No se encontró ningún libro.");
+                        }                        
                         break;
 
                     case "2":
+                        System.out.println("--- Libros Disponibles ---");
+                        System.out.println(g_Biblioteca.mostrar_libro());
+                        break;
+
+                    case "3":
+                        //TODO----------------------------------------------------------------------------------------------------------
+                        System.out.println("--- Pedir prestado un libro ---");
+
+                        break;
+
+                     case "4":
+                        //TODO----------------------------------------------------------------------------------------------------------
+                        System.out.println("--- Devolver un libro ---");
 
                         break;
 
