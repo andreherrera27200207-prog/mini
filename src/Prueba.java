@@ -55,9 +55,10 @@ public class Prueba {
 
             switch (x) {
                 case 1:
-                    System.out.println("COMO TE LLAMAS Y QUE LIBRO QUIERES ESCOGER?");
+                    System.out.println("COMO TE LLAMAS Y QUE LIBRO QUIERES ESCOGER ?");
+                    System.out.println("COLOCA TU NOMBRE DE USUARIO");
                     String nombre = sc.nextLine();
-                    System.out.println("Escoge el libro");
+                    System.out.println("COLOCA EL ID DEL LIBRO QUE DESEAS AGARRAR PRESTADO");
                     String id_libro = sc.nextLine();
 
                     g_Biblioteca.coger_prestados_libros_biblioteca(nombre, id_libro);
