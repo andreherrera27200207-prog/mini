@@ -74,6 +74,8 @@ public class Bilioteca {
                 System.out.println("6. Consultar usuarios");
                 System.out.println("7. Eliminar usuario");
                 System.out.println("8. Mostrar libros prestados");
+                System.out.println("9. Pedir prestado un libro");
+                System.out.println("10. Devolver libro");
                 System.out.println("0. Salir");
                 System.out.print("Opción: ");
                 String opcion = sc.nextLine();
@@ -151,11 +153,30 @@ public class Bilioteca {
                         }
                         break;
                     case "8":
-                    //TODO--------------------------------------------------------------------------------------------------------
 
-                        System.out.println("--- Libros Prestados ---");
+                    System.out.println(g_Biblioteca.mostrar_prueba());
+
+                    break;
+
+                    case "9":
+                    System.out.println("--- Pedir prestado un ibro ---");
+                    String nombre = gUsuarios.getUsuarioEn(usuarioLogueado).getNombre();
+                    System.out.println("Introduce el ID del libro que quieres pedir prestado");
+                    String id_libro = sc.nextLine();
+
+                    g_Biblioteca.coger_prestados_libros_biblioteca(nombre, id_libro);
+
+                    break;
+
+                    case "10":
+                    System.out.println("--- Devolver un libro ---");
+                    System.out.println("Introduce el ID del libro que deseas devolver: ");
+                    String id1 = sc.nextLine();
+
+                    g_Biblioteca.devolver_libros_biblioteca(id1);
                     
-                        break;
+                    break;
+
                     case "0":
                         salir = true;
                         break;
