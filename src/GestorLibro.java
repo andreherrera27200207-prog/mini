@@ -31,17 +31,17 @@ public class GestorLibro {
 
     }
 
-    public void prestar_libro(Usuario usuario, String id) {
+    public void coger_prestado_libro(Usuario usuario, String id_libro) {
 
         int x = 0;
 
         Libro lib = new Libro();
 
         for (int i = 0; i < aumento_secuencial; i++) {
-            if (libro_array[i].getId_libro().equals(id)) {
+            if (libro_array[i].getId_libro().equals(id_libro)) {
 
                 x = libro_array[i].getStock();
-                libro_array[i].setStock(x--);
+                libro_array[i].setStock(x-1);
 
                 //////////////////////////////////// 7
                 ///
@@ -60,34 +60,72 @@ public class GestorLibro {
 
     }
 
-    public boolean devolver_libro(String nombre_Usuario) {
+    public void devolver_libro(String nombre_Usuario) {
 
-        int x = 0;
-        int g = 0;
+        if (nombre_Usuario != null) {
+            int x = 0;
+            int g = 0;
+            boolean encontrar = true;
 
-        for (int i = 0; i < aumento_secuencial_prestamos; i++) {
+            for (int i = 0; i < aumento_secuencial_prestamos; i++) {
 
-            if (usuario_prestamos[i].getNombre().equals(nombre_Usuario)) {
-                g = i;
+                if (usuario_prestamos[i].getNombre().equals(nombre_Usuario)) {
+                    g = i;
+                    encontrar = false;
 
-                for (int j = 0; j < aumento_secuencial; j++) {
+                    for (int j = 0; j < aumento_secuencial; j++) {
 
-                    if (auxilaLibros_prestamos[i].getId_libro().equals(libro_array[j].getId_libro())) {
+                        if (auxilaLibros_prestamos[i].getId_libro().equals(libro_array[j].getId_libro())) {
 
-                        x = libro_array[i].getStock();
-                        libro_array[i].setStock(x++);
+                            x = libro_array[j].getStock();
+                            libro_array[j].setStock(x+1);
 
+                        }
 
-                        
                     }
 
                 }
+
             }
 
-        }
+            if (!encontrar) {
+                for (int i = g + 1; i < aumento_secuencial_prestamos; i++) {
+                    auxilaLibros_prestamos[i - 1] = auxilaLibros_prestamos[i];
+                    usuario_prestamos[i - 1] = usuario_prestamos[i];
+                    
+                }
 
-        return true;
+                aumento_secuencial_prestamos--;
+            }
+
+            
+        } 
+            
+
     }
+
+
+    public int mostrar_aumento_secuencial(){
+
+        return aumento_secuencial_prestamos;
+
+    }
+
+
+    public Libro[] mostrar_prueba_libro(){
+
+
+        return auxilaLibros_prestamos;
+
+    }
+
+
+    public Usuario[] mostrar_prueba_usuario(){
+
+        return usuario_prestamos;
+    }
+
+
 
     public int buscarIndicePorDNI(String dni) {
         for (int i = 0; i < aumento_secuencial; i++) {
@@ -106,6 +144,12 @@ public class GestorLibro {
             for (int i = posicion + 1; i < aumento_secuencial; i++) {
                 libro_array[i - 1] = libro_array[i];
             }
+
+            aumento_secuencial--;
+
+
+
+
             return true;
         }
         return false;
