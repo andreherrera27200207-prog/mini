@@ -58,7 +58,7 @@ public class Bilioteca {
                 System.out.println("Usuario o contraseña incorrectos, inténtalo de nuevo");
             }
         }
-        //Menú principal-------------------------
+        //-----------------------------Menú principal-------------------------
         boolean salir= false;
         while(!salir){
             Usuario u =gUsuarios.getUsuarioEn(usuarioLogueado);
@@ -150,8 +150,9 @@ public class Bilioteca {
                             System.out.println("No se encontró ningún usuario con ese ID.");
                         }
                         break;
-                    //TODO--------------------------------------------------------------------------------------------------------
                     case "8":
+                    //TODO--------------------------------------------------------------------------------------------------------
+
                         System.out.println("--- Libros Prestados ---");
                     
                         break;
@@ -194,9 +195,8 @@ public class Bilioteca {
                     break;
                 case "3":
                     System.out.println("--- Pedir prestado un ibro ---");
-                    System.out.println("Introduce tu nombre: ");
-                    String nombre = sc.nextLine();
-                    System.out.println("Introduce el libro que quieres pedir prestado");
+                    String nombre = gUsuarios.getUsuarioEn(usuarioLogueado).getNombre();
+                    System.out.println("Introduce el ID del libro que quieres pedir prestado");
                     String id_libro = sc.nextLine();
 
                     g_Biblioteca.coger_prestados_libros_biblioteca(nombre, id_libro);
@@ -204,9 +204,10 @@ public class Bilioteca {
                     break;
                 case "4":
                     System.out.println("--- Devolver un libro ---");
-                    String name= gUsuarios.getUsuarioEn(usuarioLogueado).getNombre();
+                    System.out.println("Introduce el ID del libro que deseas devolver: ");
+                    String id = sc.nextLine();
 
-                    g_Biblioteca.devolver_libros_biblioteca(name);
+                    g_Biblioteca.devolver_libros_biblioteca(id);
                     
                     break;
                 case "5":
@@ -214,9 +215,11 @@ public class Bilioteca {
                     System.out.println(g_Biblioteca.mostrar_prueba());
 
                     break;
+
                 case "0":
                     salir = true;
                     break;
+
                 default:
                     System.out.println("Opción no válida.");
                 }
