@@ -173,9 +173,14 @@ public class Bilioteca {
                             break;
 
                         case "8":
-                            System.out.println("--- Libros Prestados ---");
-                            System.out.println(g_Biblioteca.mostrar_prueba());
+                            String prestamos = g_Biblioteca.mostrar_prueba();
 
+                            if (prestamos.equals("")) {
+                                System.out.println("No hay ningún libro prestado actualmente.");
+                            } else {
+                                System.out.println("--- Libros Prestados ---");
+                                System.out.println(prestamos);
+                            }
                             break;
                         
                         case "9":
@@ -287,9 +292,14 @@ public class Bilioteca {
                             break;
 
                         case "5":
-
-                            System.out.println(g_Biblioteca.mostrar_prueba());
-
+                            String prestamos = g_Biblioteca.mostrar_prueba();
+                                                    
+                            if (prestamos.equals("")) {
+                                System.out.println("No hay ningún libro prestado actualmente.");
+                            } else {
+                                System.out.println("--- Libros Prestados ---");
+                                System.out.println(prestamos);
+                            }
                             break;
 
                         case "6":
