@@ -219,23 +219,32 @@ public class GestorLibro {
         return false;
 
     }
+    
 
-    public Libro buscar_Libro(String nombreLibro, String autorLibro, String categoria) {
+    //Buscar libros por nombre con .contains y no pidiendo todos los datos
+    public int[] buscarLibrosPorNombre(String texto){
+        int[] indices = new int[MAX];
+        int contador = 0;
 
-        for (int i = 0; i < aumento_secuencial; i++) {
-
-            if (libro_array[i].getNombre_Libro().equals(nombreLibro) || libro_array[i].getAutor().equals(autorLibro)
-                    || libro_array[i].getCategoria().equals(categoria)) {
-
-                return libro_array[i];
-
+        for(int i =0;i <aumento_secuencial; i++){
+            if (libro_array[i].getNombre_Libro().contains(texto)) {
+                indices[contador] = i;
+                contador++;
             }
-
         }
 
-        return null;
+        if (contador ==0) {
+            return null;
+        }
 
+        //para mostrar solo los indices guardados y no todo el array con huecos vacíos
+        int[] resultado = new int[contador];
+        for(int i =0; i<contador; i++){
+            resultado[i] = indices[i];
+        }
+        return resultado;
     }
+
 
     public String mostrar() {
 

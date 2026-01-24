@@ -116,19 +116,29 @@ public class Bilioteca {
                             break;
 
                         case "3":
-                            System.out.println("3- Buscar libro");
-                            System.out.print("Nombre: ");
-                            String nLibro = sc.nextLine();
-                            System.out.print("Autor): ");
-                            String aLibro = sc.nextLine();
-                            System.out.print("Categoría: ");
-                            String cLibro = sc.nextLine();
-                            Libro libro = g_Biblioteca.g_libro.buscar_Libro(nLibro, aLibro, cLibro);
-                            if (libro != null) {
-                                System.out.println("Libro encontrado: " + libro.getNombre_Libro() + " - "
-                                        + libro.getAutor() + " - " + libro.getCategoria());
+                            System.out.print("Introduce parte del nombre del libro: ");
+                            String textoBusqueda = sc.nextLine();
+
+                            int[] resultados = g_Biblioteca.g_libro.buscarLibrosPorNombre(textoBusqueda);
+
+                            if (resultados == null) {
+                                System.out.println("No se encontraron libros que contengan: " + textoBusqueda);
                             } else {
-                                System.out.println("No se encontró ningún libro.");
+                                System.out.println("Libros encontrados:");
+                                for (int i = 0; i < resultados.length; i++) {
+                                    Libro libroEncontrado = g_Biblioteca.g_libro.todos_los_libros()[resultados[i]];
+                                    System.out.println((i) + ". " + libroEncontrado.getNombre_Libro() + " - " + libroEncontrado.getAutor() + " - ID: " + libroEncontrado.getId_libro());
+                                }
+
+                                System.out.print("Elige el número del libro que quieres: ");
+                                int elegido = Integer.parseInt(sc.nextLine());
+                                
+                                if (elegido >= 0 && elegido < resultados.length) {
+                                    Libro libroElegido = g_Biblioteca.g_libro.todos_los_libros()[resultados[elegido]];
+                                    System.out.println("Has seleccionado: " + libroElegido.getNombre_Libro() + " - " + libroElegido.getAutor());
+                                } else {
+                                    System.out.println("Número inválido.");
+                                }
                             }
                             break;
 
@@ -257,18 +267,29 @@ public class Bilioteca {
 
                     switch (opcion) {
                         case "1":
-                            System.out.print("Nombre: ");
-                            String nBuscar = sc.nextLine();
-                            System.out.print("Autor: ");
-                            String aBuscar = sc.nextLine();
-                            System.out.print("Categoría: ");
-                            String cBuscar = sc.nextLine();
-                            Libro libro = g_Biblioteca.g_libro.buscar_Libro(nBuscar, aBuscar, cBuscar);
-                            if (libro != null) {
-                                System.out.println("Libro encontrado: " + libro.getNombre_Libro() + " - "
-                                        + libro.getAutor() + " - " + libro.getCategoria());
+                            System.out.print("Introduce parte del nombre del libro: ");
+                            String textoBusqueda = sc.nextLine();
+
+                            int[] resultados = g_Biblioteca.g_libro.buscarLibrosPorNombre(textoBusqueda);
+
+                            if (resultados == null) {
+                                System.out.println("No se encontraron libros que contengan: " + textoBusqueda);
                             } else {
-                                System.out.println("No se encontró ningún libro.");
+                                System.out.println("Libros encontrados:");
+                                for (int i = 0; i < resultados.length; i++) {
+                                    Libro libroEncontrado = g_Biblioteca.g_libro.todos_los_libros()[resultados[i]];
+                                    System.out.println((i) + ". " + libroEncontrado.getNombre_Libro() + " - " + libroEncontrado.getAutor() + " - ID: " + libroEncontrado.getId_libro());
+                                }
+
+                                System.out.print("Elige el número del libro que quieres: ");
+                                int elegido = Integer.parseInt(sc.nextLine());
+                                
+                                if (elegido >= 0 && elegido < resultados.length) {
+                                    Libro libroElegido = g_Biblioteca.g_libro.todos_los_libros()[resultados[elegido]];
+                                    System.out.println("Has seleccionado: " + libroElegido.getNombre_Libro() + " - " + libroElegido.getAutor());
+                                } else {
+                                    System.out.println("Número inválido.");
+                                }
                             }
                             break;
 
