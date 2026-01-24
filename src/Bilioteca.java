@@ -195,11 +195,34 @@ public class Bilioteca {
                         
                         case "9":
                             System.out.println("--- Pedir prestado un ibro ---");
-                            String nombre = gUsuarios.getUsuarioEn(usuarioLogueado).getNombre();
-                            System.out.println("Introduce el ID del libro que quieres pedir prestado");
-                            String id_libro = sc.nextLine();
 
-                            g_Biblioteca.coger_prestados_libros_biblioteca(nombre, id_libro);
+                            System.out.print("Introduce parte del nombre del libro: ");
+                            String textoBusquedaPrestado = sc.nextLine();
+
+                            int[] resultadosPrestados = g_Biblioteca.g_libro.buscarLibrosPorNombre(textoBusquedaPrestado);
+
+                            if (resultadosPrestados == null) {
+                                System.out.println("No se encontraron libros que contengan: " + textoBusquedaPrestado);
+                            } else {
+                                System.out.println("Libros encontrados:");
+                                for (int i = 0; i < resultadosPrestados.length; i++) {
+                                    Libro libroEncontrado = g_Biblioteca.g_libro.todos_los_libros()[resultadosPrestados[i]];
+                                    System.out.println((i) + ". " + libroEncontrado.getNombre_Libro() + " - " + libroEncontrado.getAutor() + " - ID: " + libroEncontrado.getId_libro());
+                                }
+
+                                System.out.print("Elige el número del libro que quieres: ");
+                                int elegido = Integer.parseInt(sc.nextLine());
+                                
+                                if (elegido >= 0 && elegido < resultadosPrestados.length) {
+                                    Libro libroElegido = g_Biblioteca.g_libro.todos_los_libros()[resultadosPrestados[elegido]];
+                                    //pedir prestado usando el id del libro con el login actual
+                                    String nombre = gUsuarios.getUsuarioEn(usuarioLogueado).getNombre();
+                                    g_Biblioteca.coger_prestados_libros_biblioteca(nombre, libroElegido.getId_libro());
+                                    System.out.println("Has pedido prestado: " + libroElegido.getNombre_Libro() + " - " + libroElegido.getAutor());
+                                } else {
+                                    System.out.println("Número inválido.");
+                                }
+                            }
 
                             break;
 
@@ -300,12 +323,34 @@ public class Bilioteca {
 
                         case "3":
                             System.out.println("--- Pedir prestado un ibro ---");
-                            String nombre = gUsuarios.getUsuarioEn(usuarioLogueado).getNombre();
-                            System.out.println("Introduce el ID del libro que quieres pedir prestado");
-                            String id_libro = sc.nextLine();
 
-                            g_Biblioteca.coger_prestados_libros_biblioteca(nombre, id_libro);
+                            System.out.print("Introduce parte del nombre del libro: ");
+                            String textoBusquedaPrestado = sc.nextLine();
 
+                            int[] resultadosPrestados = g_Biblioteca.g_libro.buscarLibrosPorNombre(textoBusquedaPrestado);
+
+                            if (resultadosPrestados == null) {
+                                System.out.println("No se encontraron libros que contengan: " + textoBusquedaPrestado);
+                            } else {
+                                System.out.println("Libros encontrados:");
+                                for (int i = 0; i < resultadosPrestados.length; i++) {
+                                    Libro libroEncontrado = g_Biblioteca.g_libro.todos_los_libros()[resultadosPrestados[i]];
+                                    System.out.println((i) + ". " + libroEncontrado.getNombre_Libro() + " - " + libroEncontrado.getAutor() + " - ID: " + libroEncontrado.getId_libro());
+                                }
+
+                                System.out.print("Elige el número del libro que quieres: ");
+                                int elegido = Integer.parseInt(sc.nextLine());
+                                
+                                if (elegido >= 0 && elegido < resultadosPrestados.length) {
+                                    Libro libroElegido = g_Biblioteca.g_libro.todos_los_libros()[resultadosPrestados[elegido]];
+                                    //pedir prestado usando el id del libro con el login actual
+                                    String nombre = gUsuarios.getUsuarioEn(usuarioLogueado).getNombre();
+                                    g_Biblioteca.coger_prestados_libros_biblioteca(nombre, libroElegido.getId_libro());
+                                    System.out.println("Has pedido prestado: " + libroElegido.getNombre_Libro() + " - " + libroElegido.getAutor());
+                                } else {
+                                    System.out.println("Número inválido.");
+                                }
+                            }
                             break;
 
                         case "4":
