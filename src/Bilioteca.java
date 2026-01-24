@@ -13,18 +13,19 @@ public class Bilioteca {
         GestorBiblioteca g_Biblioteca = new GestorBiblioteca();
 
         // Libros guardados de prueba
-        g_Biblioteca.agregar_libros_biblioteca("1234", "Jair", "Juego 1", "Romance");
-        g_Biblioteca.agregar_libros_biblioteca("1345", "Eddy", "juego2", "Accion");
-        g_Biblioteca.agregar_libros_biblioteca("1367", "Santiago", "Juego3", "Documental");
-        g_Biblioteca.agregar_libros_biblioteca("1789", "Ernesto", "Juego4", "Romance");
-        g_Biblioteca.agregar_libros_biblioteca("1965", "Jhosue", "Juego5", "Accion");
-        g_Biblioteca.agregar_libros_biblioteca("1978", "Arnaldo", "Juego6", "Ciencia Ficción");
-        g_Biblioteca.agregar_libros_biblioteca("1990", "Mitchell", "Juego7", "Romance");
-        g_Biblioteca.agregar_libros_biblioteca("1922", "Gianny", "Juego8", "Accion");
-        g_Biblioteca.agregar_libros_biblioteca("1897", "Ana", "Juego9", "Documental");
-        g_Biblioteca.agregar_libros_biblioteca("1854", "Camila", "Juego9", "Romance");
-        g_Biblioteca.agregar_libros_biblioteca("1123", "Rocio", "Juego10", "Ciencia Ficción");
-        g_Biblioteca.agregar_libros_biblioteca("1115", "Pilar", "Juego11", "Documental");
+        g_Biblioteca.agregar_libros_biblioteca("1001", "Cien años de soledad", "Gabriel García Márquez", "Novela");
+        g_Biblioteca.agregar_libros_biblioteca("1002", "Don Quijote de la Mancha", "Miguel de Cervantes", "Clásico");
+        g_Biblioteca.agregar_libros_biblioteca("1003", "1984", "George Orwell", "Ciencia Ficción");
+        g_Biblioteca.agregar_libros_biblioteca("1004", "Fahrenheit 451", "Ray Bradbury", "Ciencia Ficción");
+        g_Biblioteca.agregar_libros_biblioteca("1005", "El señor de los anillos", "J.R.R. Tolkien", "Fantasía");
+        g_Biblioteca.agregar_libros_biblioteca("1006", "Harry Potter y la piedra filosofal", "J.K. Rowling", "Fantasía");
+        g_Biblioteca.agregar_libros_biblioteca("1007", "Crónica de una muerte anunciada", "Gabriel García Márquez", "Novela");
+        g_Biblioteca.agregar_libros_biblioteca("1008", "La sombra del viento", "Carlos Ruiz Zafón", "Misterio");
+        g_Biblioteca.agregar_libros_biblioteca("1009", "El código Da Vinci", "Dan Brown", "Thriller");
+        g_Biblioteca.agregar_libros_biblioteca("1010", "Los juegos del hambre", "Suzanne Collins", "Ciencia Ficción");
+        g_Biblioteca.agregar_libros_biblioteca("1011", "El principito", "Antoine de Saint-Exupéry", "Fábula");
+        g_Biblioteca.agregar_libros_biblioteca("1012", "La metamorfosis", "Franz Kafka", "Clásico");
+
 
         // Usuarios guardados de prueba
         gUsuarios.registrarUsuarios("admin", "admin", true);
@@ -78,6 +79,12 @@ public class Bilioteca {
                     System.out.println("6. Consultar usuarios");
                     System.out.println("7. Eliminar usuario");
                     System.out.println("8. Mostrar libros prestados");
+                    System.out.println("9. Pedir prestado un libro");
+                    System.out.println("10. Devolver libro");
+                    System.out.println("11. Libro más prestado");
+                    System.out.println("12. Usuario que más solicito");
+                    System.out.println("13. Mostrar cantidad de prestamos activos");
+                    System.out.println("14. Salir de este usuario");
                     System.out.println("0. Salir");
                     System.out.print("Opción: ");
                     String opcion = sc.nextLine();
@@ -96,6 +103,7 @@ public class Bilioteca {
                             g_Biblioteca.agregar_libros_biblioteca(id, nombreLibro, autor, categoria);
                             System.out.println("¡Libro agregado correctamente!");
                             break;
+
                         case "2":
                             System.out.print("ID libro a eliminar: ");
                             String idEliminar = sc.nextLine();
@@ -106,6 +114,7 @@ public class Bilioteca {
                                 System.out.println("No se encontró el libro.");
                             }
                             break;
+
                         case "3":
                             System.out.println("3- Buscar libro");
                             System.out.print("Nombre: ");
@@ -122,11 +131,14 @@ public class Bilioteca {
                                 System.out.println("No se encontró ningún libro.");
                             }
                             break;
+
                         case "4":
                             System.out.println("--- Libros Disponibles ---");
                             System.out.println(g_Biblioteca.mostrar_libro());
                             break;
+
                         case "5":
+                            System.out.println("--- Registrar Usuario ---");
                             System.out.print("Nombre usuario: ");
                             String nUsuario = sc.nextLine();
                             System.out.print("Contraseña: ");
@@ -139,6 +151,7 @@ public class Bilioteca {
                             else
                                 System.out.println("No se pudo registrar (base de datos llena).");
                             break;
+
                         case "6":
                             System.out.println("--- Usuarios Registrados ---");
                             for (int i = 0; i < gUsuarios.getTotalUsuarios(); i++) {
@@ -158,12 +171,45 @@ public class Bilioteca {
                                 System.out.println("No se encontró ningún usuario con ese ID.");
                             }
                             break;
-                        case "8":
-                            // TODO--------------------------------------------------------------------------------------------------------
 
+                        case "8":
                             System.out.println("--- Libros Prestados ---");
+                            System.out.println(g_Biblioteca.mostrar_prueba());
 
                             break;
+                        
+                        case "9":
+                            System.out.println("--- Pedir prestado un ibro ---");
+                            String nombre = gUsuarios.getUsuarioEn(usuarioLogueado).getNombre();
+                            System.out.println("Introduce el ID del libro que quieres pedir prestado");
+                            String id_libro = sc.nextLine();
+
+                            g_Biblioteca.coger_prestados_libros_biblioteca(nombre, id_libro);
+
+                            break;
+
+                        case "10":
+                            System.out.println("--- Devolver un libro ---");
+                            System.out.println("Introduce el ID del libro que deseas devolver: ");
+                            String id1 = sc.nextLine();
+
+                            g_Biblioteca.devolver_libros_biblioteca(id1);
+
+                            break;
+
+                        case "11":
+                            System.out.println("Libro más prestado: " + g_Biblioteca.libro_mas_prestado());  
+                            break;
+                            
+                        case "12":
+                            
+                            System.out.println("Usuario que más realizó prestamos: " + g_Biblioteca.usuario_que_mas_solicito());    
+                            break;
+
+                        case "13":
+                            System.out.println("Cantidad de préstamos activos: " + g_Biblioteca.cantidad_prestamos());   
+                            break; 
+                        
                         case "0":
                             salir = true;
                             break;
