@@ -210,8 +210,15 @@ public class Bilioteca {
                             System.out.println("Cantidad de préstamos activos: " + g_Biblioteca.cantidad_prestamos());   
                             break; 
                         
+                        case "14":
+                            salir = true;
+                            logueado = false;
+                            break;
+                        
                         case "0":
                             salir = true;
+                            logueado = true;
+                            logueado2 = true;
                             break;
                         default:
                             System.out.println("Opción no válida.");
@@ -224,10 +231,10 @@ public class Bilioteca {
                     System.out.println("3. Pedir prestado un libro");
                     System.out.println("4. Devolver libro");
                     System.out.println("5. Mostrar lista de prestamos");
-                    System.out.println("6. Salir de este usuario");
-                    System.out.println("7. Libro más prestado");
-                    System.out.println("8. Usuario que más solicito");
-                    System.out.println("9. Mostrar cantidad de prestamos activos");
+                    System.out.println("6. Libro más prestado");
+                    System.out.println("7. Usuario que más solicito");
+                    System.out.println("8. Mostrar cantidad de prestamos activos");
+                    System.out.println("9. Salir de este usuario");
                     System.out.println("0. Salir definitivamente");
                     System.out.print("Opción: ");
                     String opcion = sc.nextLine();
@@ -248,10 +255,12 @@ public class Bilioteca {
                                 System.out.println("No se encontró ningún libro.");
                             }
                             break;
+
                         case "2":
                             System.out.println("--- Libros Disponibles ---");
                             System.out.println(g_Biblioteca.mostrar_libro());
                             break;
+
                         case "3":
                             System.out.println("--- Pedir prestado un ibro ---");
                             String nombre = gUsuarios.getUsuarioEn(usuarioLogueado).getNombre();
@@ -261,6 +270,7 @@ public class Bilioteca {
                             g_Biblioteca.coger_prestados_libros_biblioteca(nombre, id_libro);
 
                             break;
+
                         case "4":
                             System.out.println("--- Devolver un libro ---");
                             System.out.println("Introduce el ID del libro que deseas devolver: ");
@@ -269,6 +279,7 @@ public class Bilioteca {
                             g_Biblioteca.devolver_libros_biblioteca(id);
 
                             break;
+
                         case "5":
 
                             System.out.println(g_Biblioteca.mostrar_prueba());
@@ -276,23 +287,23 @@ public class Bilioteca {
                             break;
 
                         case "6":
+                            System.out.println("Libro más prestado: " + g_Biblioteca.libro_mas_prestado());  
+                            break;
+                            
+                        case "7":
+                            
+                            System.out.println("Usuario que más realizó prestamos: " + g_Biblioteca.usuario_que_mas_solicito());    
+                            break;
+
+                        case "8":
+                            System.out.println("Cantidad de préstamos activos: " + g_Biblioteca.cantidad_prestamos());   
+                            break; 
+
+                        case "9":
                             salir = true;
                             logueado = false;
                             break;
-
-                        case "7":
-                            System.out.println("LIBRO MÁS PRESTADO: " + g_Biblioteca.libro_mas_prestado());  
-                            break;
-                            
-                        case "8":
-                            
-                            System.out.println("USUARIO QUE MÁS REALIZO PRESTAMOS: " + g_Biblioteca.usuario_que_mas_solicito());    
-                            break;
-
-                        case "9":
-                            System.out.println("CANTIDAD DE PRESTAMOS ACTIVOS: " + g_Biblioteca.cantidad_prestamos());   
-                            break; 
-
+                                                    
                         case "0":
                             
                             salir = true;
