@@ -245,6 +245,30 @@ public class GestorLibro {
         return resultado;
     }
 
+    //Buscar libros pero exclusivo para los que están prestados
+    public int[] buscarLibrosPrestadosPorUsuario(String nombreUsuario) {
+    int[] indices = new int[MAX];
+    int contador = 0;
+
+    for (int i = 0; i < aumento_secuencial_prestamos; i++) {
+        if (usuario_prestamos[i].getNombre().equals(nombreUsuario)) {
+            indices[contador] = i;
+            contador++;
+        }
+    }
+
+    if (contador == 0) {
+        return null;
+    }
+
+    int[] resultado = new int[contador];
+    for (int i = 0; i < contador; i++) {
+        resultado[i] = indices[i];
+    }
+
+    return resultado;
+}
+
 
     public String mostrar() {
 

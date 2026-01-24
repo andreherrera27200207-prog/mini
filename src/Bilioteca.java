@@ -228,18 +228,35 @@ public class Bilioteca {
 
                         case "10":
                             System.out.println("--- Devolver un libro ---");
-                            System.out.println("Introduce el ID del libro que deseas devolver: ");
-                            String id1 = sc.nextLine();
-
-                            boolean devuelto = g_Biblioteca.devolver_libros_biblioteca(id1);
+                            int[] prestamosUsuario = g_Biblioteca.g_libro.buscarLibrosPrestadosPorUsuario(gUsuarios.getUsuarioEn(usuarioLogueado).getNombre());
                                                     
-                            if (devuelto) {
-                                System.out.println("Libro devuelto correctamente.");
+                            if (prestamosUsuario == null) {
+                                System.out.println("No tienes libros prestados actualmente.");
                             } else {
-                                System.out.println("Ese libro no estaba prestado.");
+                                System.out.println("Tus libros prestados:");
+                                for (int i = 0; i < prestamosUsuario.length; i++) {
+                                    Libro libroPrestadaos = g_Biblioteca.g_libro.mostrar_prueba_libro()[prestamosUsuario[i]];
+                                    System.out.println(i + ". " + libroPrestadaos.getNombre_Libro() + " - " + libroPrestadaos.getAutor() + " - ID: " + libroPrestadaos.getId_libro());
+                                }
+                            
+                                System.out.print("Elige el número del libro que deseas devolver: ");
+                                int elegido = Integer.parseInt(sc.nextLine());
+                            
+                                if (elegido >= 0 && elegido < prestamosUsuario.length) {
+                                    String idLibro = g_Biblioteca.g_libro.mostrar_prueba_libro()[prestamosUsuario[elegido]].getId_libro();
+                                    boolean devuelto = g_Biblioteca.devolver_libros_biblioteca(idLibro);
+                                
+                                    if (devuelto) {
+                                        System.out.println("Libro devuelto correctamente: " + g_Biblioteca.g_libro.mostrar_prueba_libro()[prestamosUsuario[elegido]].getNombre_Libro());
+                                    } else {
+                                        System.out.println("Error al devolver el libro.");
+                                    }
+                                } else {
+                                    System.out.println("Número inválido.");
+                                }
                             }
                             break;
-
+                            
                         case "11":
                             String libroMasPrestado = g_Biblioteca.libro_mas_prestado();
 
@@ -355,16 +372,35 @@ public class Bilioteca {
 
                         case "4":
                             System.out.println("--- Devolver un libro ---");
-                            System.out.println("Introduce el ID del libro que deseas devolver: ");
-                            String id = sc.nextLine();
-
-                            boolean devuelto = g_Biblioteca.devolver_libros_biblioteca(id);
+                            int[] prestamosUsuario = g_Biblioteca.g_libro.buscarLibrosPrestadosPorUsuario(gUsuarios.getUsuarioEn(usuarioLogueado).getNombre());
                                                     
-                            if (devuelto) {
-                                System.out.println("Libro devuelto correctamente.");
+                            if (prestamosUsuario == null) {
+                                System.out.println("No tienes libros prestados actualmente.");
                             } else {
-                                System.out.println("Ese libro no estaba prestado.");
+                                System.out.println("Tus libros prestados:");
+                                for (int i = 0; i < prestamosUsuario.length; i++) {
+                                    Libro libroPrestadaos = g_Biblioteca.g_libro.mostrar_prueba_libro()[prestamosUsuario[i]];
+                                    System.out.println(i + ". " + libroPrestadaos.getNombre_Libro() + " - " + libroPrestadaos.getAutor() + " - ID: " + libroPrestadaos.getId_libro());
+                                }
+                            
+                                System.out.print("Elige el número del libro que deseas devolver: ");
+                                int elegido = Integer.parseInt(sc.nextLine());
+                            
+                                if (elegido >= 0 && elegido < prestamosUsuario.length) {
+                                    String idLibro = g_Biblioteca.g_libro.mostrar_prueba_libro()[prestamosUsuario[elegido]].getId_libro();
+                                    boolean devuelto = g_Biblioteca.devolver_libros_biblioteca(idLibro);
+                                
+                                    if (devuelto) {
+                                        System.out.println("Libro devuelto correctamente: " + g_Biblioteca.g_libro.mostrar_prueba_libro()[prestamosUsuario[elegido]].getNombre_Libro());
+                                    } else {
+                                        System.out.println("Error al devolver el libro.");
+                                    }
+                                } else {
+                                    System.out.println("Número inválido.");
+                                }
                             }
+
+                            
                             break;
 
                         case "5":
