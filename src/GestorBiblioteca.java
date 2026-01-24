@@ -47,9 +47,9 @@ public class GestorBiblioteca {
 
 
 
-    public void devolver_libros_biblioteca(String nombre_Usuario){
+    public boolean devolver_libros_biblioteca(String id_libro){
 
-        g_libro.devolver_libro(nombre_Usuario);
+        return g_libro.devolver_libro(id_libro);
 
     }
 

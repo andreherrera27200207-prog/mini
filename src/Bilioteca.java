@@ -198,8 +198,13 @@ public class Bilioteca {
                             System.out.println("Introduce el ID del libro que deseas devolver: ");
                             String id1 = sc.nextLine();
 
-                            g_Biblioteca.devolver_libros_biblioteca(id1);
-
+                            boolean devuelto = g_Biblioteca.devolver_libros_biblioteca(id1);
+                                                    
+                            if (devuelto) {
+                                System.out.println("Libro devuelto correctamente.");
+                            } else {
+                                System.out.println("Ese libro no estaba prestado.");
+                            }
                             break;
 
                         case "11":
@@ -287,8 +292,13 @@ public class Bilioteca {
                             System.out.println("Introduce el ID del libro que deseas devolver: ");
                             String id = sc.nextLine();
 
-                            g_Biblioteca.devolver_libros_biblioteca(id);
-
+                            boolean devuelto = g_Biblioteca.devolver_libros_biblioteca(id);
+                                                    
+                            if (devuelto) {
+                                System.out.println("Libro devuelto correctamente.");
+                            } else {
+                                System.out.println("Ese libro no estaba prestado.");
+                            }
                             break;
 
                         case "5":

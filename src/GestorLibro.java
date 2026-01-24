@@ -1,5 +1,6 @@
 /***
  * @author Fabricio
+ * @author Pablo
  */
 
 public class GestorLibro {
@@ -61,10 +62,10 @@ public class GestorLibro {
     }
 
     // Cambiado para devolver por id de libro--------------------------------
-    public void devolver_libro(String id_libro) {
+    public boolean devolver_libro(String id_libro) {
 
         if (id_libro == null) {
-            return;
+            return false;
         }
 
         int posicionPrestamo = -1;
@@ -79,8 +80,7 @@ public class GestorLibro {
         }
 
         if (!encontradoPrestamo) {
-            System.out.println("Ese libro no está prestado.");
-            return;
+            return false;
         }
 
         // Aumentar stock del libro devuelto
@@ -101,7 +101,7 @@ public class GestorLibro {
 
         aumento_secuencial_prestamos--;
 
-        System.out.println("Libro devuelto correctamente.");
+        return true;
     }
 
     public String libro_más_prestados() {
