@@ -198,7 +198,13 @@ public class Bilioteca {
                             break;
 
                         case "11":
-                            System.out.println("Libro más prestado: " + g_Biblioteca.libro_mas_prestado());  
+                            String libroMasPrestado = g_Biblioteca.libro_mas_prestado();
+
+                            if (libroMasPrestado == null) {
+                                System.out.println("No hay libros prestados todavía.");
+                            } else {
+                                System.out.println("Libro más prestado: " + libroMasPrestado);
+                            }  
                             break;
                             
                         case "12":
@@ -287,7 +293,13 @@ public class Bilioteca {
                             break;
 
                         case "6":
-                            System.out.println("Libro más prestado: " + g_Biblioteca.libro_mas_prestado());  
+                            String libroMasPrestado = g_Biblioteca.libro_mas_prestado();
+
+                            if (libroMasPrestado == null) {
+                                System.out.println("No hay libros prestados todavía.");
+                            } else {
+                                System.out.println("Libro más prestado: " + libroMasPrestado);
+                            }  
                             break;
                             
                         case "7":

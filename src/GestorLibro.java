@@ -105,6 +105,9 @@ public class GestorLibro {
     }
 
     public String libro_más_prestados() {
+        if (aumento_secuencial_prestamos == 0) {
+            return null;
+        }
         int x = 0;
 
         int indice = 0;
