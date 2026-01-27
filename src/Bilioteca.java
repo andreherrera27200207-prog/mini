@@ -326,15 +326,16 @@ public class Bilioteca {
 
                     switch (opcion) {
                         case "1":
+                            System.out.println(VERDE + "----Buscar libro----"+ RESET);
                             System.out.print("\nIntroduce parte del nombre del libro: ");
                             String textoBusqueda = sc.nextLine();
 
                             int[] resultados = g_Biblioteca.g_libro.buscarLibrosPorNombre(textoBusqueda);
 
                             if (resultados == null) {
-                                System.out.println("No se encontraron libros que contengan: " + textoBusqueda);
+                                System.out.println(ROJO+ "No se encontraron libros que contengan: " + textoBusqueda + RESET);
                             } else {
-                                System.out.println("Libros encontrados:");
+                                System.out.println(VERDE+"Libros encontrados:"+RESET);
                                 for (int i = 0; i < resultados.length; i++) {
                                     Libro libroEncontrado = g_Biblioteca.g_libro.todos_los_libros()[resultados[i]];
                                     System.out.println((i) + ". " + libroEncontrado.getNombre_Libro() + " - " + libroEncontrado.getAutor() + " - ID: " + libroEncontrado.getId_libro());
@@ -345,20 +346,20 @@ public class Bilioteca {
                                 
                                 if (elegido >= 0 && elegido < resultados.length) {
                                     Libro libroElegido = g_Biblioteca.g_libro.todos_los_libros()[resultados[elegido]];
-                                    System.out.println("Has seleccionado: " + libroElegido.getNombre_Libro() + " - " + libroElegido.getAutor());
+                                    System.out.println(VERDE+"Has seleccionado: " + libroElegido.getNombre_Libro() + " - " + libroElegido.getAutor()+RESET);
                                 } else {
-                                    System.out.println("Número inválido.");
+                                    System.out.println(ROJO+"Número inválido."+RESET);
                                 }
                             }
                             break;
 
                         case "2":
-                            System.out.println("\n--- Libros Disponibles ---");
+                            System.out.println(VERDE+"---- Libros Disponibles ----"+RESET);
                             System.out.println(g_Biblioteca.mostrar_libro());
                             break;
 
                         case "3":
-                            System.out.println("\n--- Pedir prestado un ibro ---");
+                            System.out.println(VERDE+"---- Pedir prestado un ibro ----"+RESET);
 
                             System.out.print("Introduce parte del nombre del libro: ");
                             String textoBusquedaPrestado = sc.nextLine();
@@ -366,9 +367,9 @@ public class Bilioteca {
                             int[] resultadosPrestados = g_Biblioteca.g_libro.buscarLibrosPorNombre(textoBusquedaPrestado);
 
                             if (resultadosPrestados == null) {
-                                System.out.println("No se encontraron libros que contengan: " + textoBusquedaPrestado);
+                                System.out.println(ROJO+ "No se encontraron libros que contengan: " + textoBusquedaPrestado + RESET);
                             } else {
-                                System.out.println("Libros encontrados:");
+                                System.out.println(VERDE+"Libros encontrados:"+RESET);
                                 for (int i = 0; i < resultadosPrestados.length; i++) {
                                     Libro libroEncontrado = g_Biblioteca.g_libro.todos_los_libros()[resultadosPrestados[i]];
                                     System.out.println((i) + ". " + libroEncontrado.getNombre_Libro() + " - " + libroEncontrado.getAutor() + " - ID: " + libroEncontrado.getId_libro());
@@ -382,21 +383,21 @@ public class Bilioteca {
                                     //pedir prestado usando el id del libro con el login actual
                                     String nombre = gUsuarios.getUsuarioEn(usuarioLogueado).getNombre();
                                     g_Biblioteca.coger_prestados_libros_biblioteca(nombre, libroElegido.getId_libro());
-                                    System.out.println("Has pedido prestado: " + libroElegido.getNombre_Libro() + " - " + libroElegido.getAutor());
+                                    System.out.println(VERDE+"Has pedido prestado: " + libroElegido.getNombre_Libro() + " - " + libroElegido.getAutor()+RESET);
                                 } else {
-                                    System.out.println("Número inválido.");
+                                    System.out.println(ROJO+"Número inválido."+RESET);
                                 }
                             }
                             break;
 
                         case "4":
-                            System.out.println("--- Devolver un libro ---");
+                            System.out.println(VERDE+ "---- Devolver un libro ----"+ RESET);
                             int[] prestamosUsuario = g_Biblioteca.g_libro.buscarLibrosPrestadosPorUsuario(gUsuarios.getUsuarioEn(usuarioLogueado).getNombre());
                                                     
                             if (prestamosUsuario == null) {
-                                System.out.println("No tienes libros prestados actualmente.");
+                                System.out.println(ROJO+"No tienes libros prestados actualmente."+RESET);
                             } else {
-                                System.out.println("Tus libros prestados:");
+                                System.out.println(VERDE+"Tus libros prestados:"+RESET);
                                 for (int i = 0; i < prestamosUsuario.length; i++) {
                                     Libro libroPrestadaos = g_Biblioteca.g_libro.mostrar_prueba_libro()[prestamosUsuario[i]];
                                     System.out.println(i + ". " + libroPrestadaos.getNombre_Libro() + " - " + libroPrestadaos.getAutor() + " - ID: " + libroPrestadaos.getId_libro());
@@ -410,12 +411,12 @@ public class Bilioteca {
                                     boolean devuelto = g_Biblioteca.devolver_libros_biblioteca(idLibro);
                                 
                                     if (devuelto) {
-                                        System.out.println("Libro devuelto correctamente: " + g_Biblioteca.g_libro.mostrar_prueba_libro()[prestamosUsuario[elegido]].getNombre_Libro());
+                                        System.out.println(VERDE+"Libro devuelto correctamente: " + g_Biblioteca.g_libro.mostrar_prueba_libro()[prestamosUsuario[elegido]].getNombre_Libro()+RESET);
                                     } else {
-                                        System.out.println("Error al devolver el libro.");
+                                        System.out.println(ROJO+"Error al devolver el libro."+RESET);
                                     }
                                 } else {
-                                    System.out.println("Número inválido.");
+                                    System.out.println(ROJO+"Número inválido."+RESET);
                                 }
                             }
 
@@ -423,32 +424,35 @@ public class Bilioteca {
                             break;
 
                         case "5":
+                            System.out.println(VERDE+"---- Mostrar prestados ----"+RESET);
                             String prestamos = g_Biblioteca.mostrar_prueba();
                                                     
                             if (prestamos.equals("")) {
-                                System.out.println("No hay ningún libro prestado actualmente.");
+                                System.out.println(ROJO+"No hay ningún libro prestado actualmente."+RESET);
                             } else {
-                                System.out.println("--- Libros Prestados ---");
+                                System.out.println(VERDE+"---- Libros Prestados ----"+RESET);
                                 System.out.println(prestamos);
                             }
                             break;
 
                         case "6":
+                            System.out.println(VERDE+ "---- Libro más prestado ----"+ RESET);
                             String libroMasPrestado = g_Biblioteca.libro_mas_prestado();
 
                             if (libroMasPrestado == null) {
-                                System.out.println("No hay libros prestados todavía.");
+                                System.out.println(ROJO+"No hay libros prestados todavía."+RESET);
                             } else {
                                 System.out.println("Libro más prestado: " + libroMasPrestado);
                             }  
                             break;
                             
                         case "7":
-                            
+                            System.out.println(VERDE+ "---- Usuario más activo ----"+ RESET);
                             System.out.println("Usuario que más realizó prestamos: " + g_Biblioteca.usuario_que_mas_solicito());    
                             break;
 
                         case "8":
+                            System.out.println(VERDE+ "---- Prestamos activos ----"+ RESET);
                             System.out.println("Cantidad de préstamos activos: " + g_Biblioteca.cantidad_prestamos());   
                             break; 
 
@@ -465,7 +469,7 @@ public class Bilioteca {
                             break;
 
                         default:
-                            System.out.println("Opción no válida.");
+                            System.out.println(ROJO+"Opción no válida."+RESET);
                     }
                 }
             }
