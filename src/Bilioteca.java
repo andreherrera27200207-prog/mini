@@ -440,6 +440,7 @@ public class Bilioteca {
                                 System.out.println("No hay libros prestados todavía.");
                             } else {
                                 System.out.println("Libro más prestado: " + libroMasPrestado);
+                                System.out.println(g_Biblioteca.todos_los_libros_mas_prestados());
                             }  
                             break;
                             
