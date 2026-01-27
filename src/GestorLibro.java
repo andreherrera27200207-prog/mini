@@ -7,9 +7,11 @@ public class GestorLibro {
     private Libro[] libro_array;
     private Usuario[] usuario_prestamos;
     private Libro[] auxilaLibros_prestamos;
+    private Libro[] auxiaLibros_total_prestamos;
 
     private int aumento_secuencial;
     private int aumento_secuencial_prestamos;
+    private int aumento_secuencial_prestamos_total;
     private final int MAX = 100;
 
     public GestorLibro() {
@@ -17,8 +19,10 @@ public class GestorLibro {
         libro_array = new Libro[MAX];
         usuario_prestamos = new Usuario[MAX];
         auxilaLibros_prestamos = new Libro[MAX];
+        auxiaLibros_total_prestamos = new Libro[MAX];
         aumento_secuencial = 0;
         aumento_secuencial_prestamos = 0;
+        aumento_secuencial_prestamos_total = 0;
 
     }
 
@@ -108,6 +112,9 @@ public class GestorLibro {
         if (aumento_secuencial_prestamos == 0) {
             return null;
         }
+
+        boolean verdad = false;
+
         int x = 0;
 
         int indice = 0;
@@ -130,10 +137,66 @@ public class GestorLibro {
 
                 }
             }
+
+        }
+
+        if (aumento_secuencial_prestamos_total == 0) {
+            Libro li = new Libro();
+
+            li.setNombre_Libro(auxilaLibros_prestamos[indice].getNombre_Libro());
+            li.setAutor(auxilaLibros_prestamos[indice].getAutor());
+            li.setCategoria(auxilaLibros_prestamos[indice].getCategoria());
+            /// -
+            auxiaLibros_total_prestamos[aumento_secuencial_prestamos_total] = li;
+            aumento_secuencial_prestamos_total++;
+        } else {
+            boolean vrd = false;
+            for (int i = 0; i < aumento_secuencial_prestamos_total; i++) {
+
+                if (auxilaLibros_prestamos[indice].getNombre_Libro()
+                        .equals(auxiaLibros_total_prestamos[i].getNombre_Libro())) {
+                    vrd = true;
+                    break;
+                }
+
+            }
+
+            if (!vrd) {
+                Libro li = new Libro();
+
+                li.setNombre_Libro(auxilaLibros_prestamos[indice].getNombre_Libro());
+                li.setAutor(auxilaLibros_prestamos[indice].getAutor());
+                li.setCategoria(auxilaLibros_prestamos[indice].getCategoria());
+                /// -
+                auxiaLibros_total_prestamos[aumento_secuencial_prestamos_total] = li;
+                aumento_secuencial_prestamos_total++;
+            }
         }
 
         return auxilaLibros_prestamos[indice].getNombre_Libro();
 
+    }
+
+    /////////// ---////
+
+    public String Libros_mas_prestados() {
+
+        String valor = "";
+
+        String todo = "";
+
+        for (int i = 0; i < aumento_secuencial_prestamos_total; i++) {
+
+            
+             todo += auxiaLibros_total_prestamos[i].getNombre_Libro() + "\n";
+
+               
+
+        
+
+        }
+
+        return todo;
     }
 
     public String Usuario_más_prestamos() {
@@ -166,16 +229,11 @@ public class GestorLibro {
 
     }
 
-
-
-    public int cantidad_de_prestamos(){
+    public int cantidad_de_prestamos() {
 
         return aumento_secuencial_prestamos;
-        
 
     }
-
-
 
     public int mostrar_aumento_secuencial() {
 
@@ -219,56 +277,54 @@ public class GestorLibro {
         return false;
 
     }
-    
 
-    //Buscar libros por nombre con .contains y no pidiendo todos los datos
-    public int[] buscarLibrosPorNombre(String texto){
+    // Buscar libros por nombre con .contains y no pidiendo todos los datos
+    public int[] buscarLibrosPorNombre(String texto) {
         int[] indices = new int[MAX];
         int contador = 0;
 
-        for(int i =0;i <aumento_secuencial; i++){
+        for (int i = 0; i < aumento_secuencial; i++) {
             if (libro_array[i].getNombre_Libro().contains(texto)) {
                 indices[contador] = i;
                 contador++;
             }
         }
 
-        if (contador ==0) {
+        if (contador == 0) {
             return null;
         }
 
-        //para mostrar solo los indices guardados y no todo el array con huecos vacíos
+        // para mostrar solo los indices guardados y no todo el array con huecos vacíos
         int[] resultado = new int[contador];
-        for(int i =0; i<contador; i++){
+        for (int i = 0; i < contador; i++) {
             resultado[i] = indices[i];
         }
         return resultado;
     }
 
-    //Buscar libros pero exclusivo para los que están prestados
+    // Buscar libros pero exclusivo para los que están prestados
     public int[] buscarLibrosPrestadosPorUsuario(String nombreUsuario) {
-    int[] indices = new int[MAX];
-    int contador = 0;
+        int[] indices = new int[MAX];
+        int contador = 0;
 
-    for (int i = 0; i < aumento_secuencial_prestamos; i++) {
-        if (usuario_prestamos[i].getNombre().equals(nombreUsuario)) {
-            indices[contador] = i;
-            contador++;
+        for (int i = 0; i < aumento_secuencial_prestamos; i++) {
+            if (usuario_prestamos[i].getNombre().equals(nombreUsuario)) {
+                indices[contador] = i;
+                contador++;
+            }
         }
+
+        if (contador == 0) {
+            return null;
+        }
+
+        int[] resultado = new int[contador];
+        for (int i = 0; i < contador; i++) {
+            resultado[i] = indices[i];
+        }
+
+        return resultado;
     }
-
-    if (contador == 0) {
-        return null;
-    }
-
-    int[] resultado = new int[contador];
-    for (int i = 0; i < contador; i++) {
-        resultado[i] = indices[i];
-    }
-
-    return resultado;
-}
-
 
     public String mostrar() {
 

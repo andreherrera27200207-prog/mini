@@ -88,6 +88,12 @@ public class GestorBiblioteca {
     }
 
 
+    public String todos_los_libros_mas_prestados(){
+        String todos_libros = g_libro.Libros_mas_prestados();
+        return todos_libros;
+    }
+
+
 
     public String libro_mas_prestado(){
 
