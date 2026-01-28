@@ -1,5 +1,12 @@
 import java.util.Random;
 
+/***
+ * @author Fabricio
+ * @author Pablo
+ */
+
+
+
 public class GestorBiblioteca {
     private Libro[] GestorLibro;
 
