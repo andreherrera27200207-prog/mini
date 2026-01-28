@@ -116,14 +116,38 @@ public class Bilioteca {
 
                         case "2":
                             System.out.println(ROJO + "----Eliminar libro----"+ RESET);
-                            System.out.print("ID libro a eliminar: ");
-                            String idEliminar = sc.nextLine();
-                            boolean ok = g_Biblioteca.g_libro.eliminar_Libro(idEliminar);
-                            if (ok) {
-                                System.out.println(VERDE+ "Libro eliminado." + RESET);
+                            System.out.println(VERDE + "----Buscar el libro que quieres eliminar----"+ RESET);
+                            System.out.print("Introduce parte del nombre del libro: ");
+                            String textoBusquedaEliminar = sc.nextLine();
+
+                            int[] resultadosEliminar = g_Biblioteca.g_libro.buscarLibrosPorNombre(textoBusquedaEliminar);
+
+                            if (resultadosEliminar == null) {
+                                System.out.println(ROJO +"No se encontraron libros que contengan: " + textoBusquedaEliminar +RESET);
                             } else {
-                                System.out.println(ROJO+"No se encontró el libro."+ RESET);
+                                System.out.println(VERDE+ "Libros encontrados:"+ RESET);
+                                for (int i = 0; i < resultadosEliminar.length; i++) {
+                                    Libro libroEncontrado = g_Biblioteca.g_libro.todos_los_libros()[resultadosEliminar[i]];
+                                    System.out.println((i) + ". " + libroEncontrado.getNombre_Libro() + " - " + libroEncontrado.getAutor() + " - ID: " + libroEncontrado.getId_libro());
+                                }
+
+                                System.out.print("Elige el número del libro que quieres eliminar: ");
+                                int elegido = Integer.parseInt(sc.nextLine());
+                                if (elegido >= 0 && elegido < resultadosEliminar.length) {
+                                    Libro libroElegido = g_Biblioteca.g_libro.todos_los_libros()[resultadosEliminar[elegido]];
+
+                                    boolean eliminado = g_Biblioteca.g_libro.eliminar_Libro(libroElegido.getId_libro());
+
+                                    if (eliminado) {
+                                        System.out.println(VERDE+"Libro eliminado correctamente."+RESET);
+                                    } else {
+                                        System.out.println(ROJO+"No se pudo eliminar el libro."+RESET);
+                                    }
+                                } else {
+                                System.out.println(ROJO+"Número inválido."+RESET);
                             }
+                        }
+
                             break;
 
                         case "3":
@@ -278,7 +302,9 @@ public class Bilioteca {
                             if (libroMasPrestado == null) {
                                 System.out.println(ROJO+"No hay libros prestados todavía."+RESET);
                             } else {
-                                System.out.println(VERDE+"Libro más prestado: " + libroMasPrestado+RESET);
+                                System.out.println("Libro más prestado: " + libroMasPrestado);
+                                System.out.println("LIBROS MÁS PRESTADOS: ");
+                                System.out.println(g_Biblioteca.todos_los_libros_mas_prestados());
                             }  
                             break;
                             
